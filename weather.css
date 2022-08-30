@@ -139,6 +139,17 @@ body{
 .place-container .time-zone{
     font-size: 20px;
 }
+.place-container #city{
+    display: flex;
+    flex-direction: column;
+    background: rgba(24,24,27,0.6);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 2px solid white;
+    color: white;
+    font-size: 15px;
+}
 .current-info .others{
     padding: 12px;
 }
