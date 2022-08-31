@@ -7,6 +7,8 @@ const weatherforecast=document.getElementById('weather-forecast')
 const current_temp=document.getElementById('current-temp')
 const city=document.getElementById('city')
 const other=document.getElementById('current-weather-items')
+const day2=document.getElementById('day2')
+const day3=document.getElementById('day3')
 
 const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
@@ -72,8 +74,30 @@ function update_forecast(data){
     current_temp.innerHTML=
     `<img src=${data.current.condition.icon} alt="weather-icon" class="w-icon">
     <div class="other">
-        <div class="day"> ${days[t]}</div>
-        <div class="temp">Day - ${data.forecast.forecastday[0].day.maxtemp_c} &#176; C</div>
-        <div class="temp">Night - ${data.forecast.forecastday[0].day.mintemp_c} &#176; C</div>
+        <div class="day"> Today </div>
+        <div class="temp">Max - ${data.forecast.forecastday[0].day.maxtemp_c} &#176; C</div>
+        <div class="temp">Min - ${data.forecast.forecastday[0].day.mintemp_c} &#176; C</div>
+    </div>`
+    var t1=(t===6)?-1:t
+    day2.innerHTML=
+    `<img src=${data.forecast.forecastday[1].day.condition.icon} alt="weather-icon" class="w-icon">
+    <div class="other">
+        <div class="day">${days[t1+1]}</div>
+        <div class="temp">Max - ${data.forecast.forecastday[1].day.maxtemp_c} &#176; C</div>
+        <div class="temp">Min - ${data.forecast.forecastday[1].day.mintemp_c} &#176; C</div>
+    </div>`
+    var t2=t
+    if (t===5){
+        t2=-2
+    }
+    if (t==6){
+        t2=-1
+    }
+    day3.innerHTML=
+    `<img src=${data.forecast.forecastday[2].day.condition.icon} alt="weather-icon" class="w-icon">
+    <div class="other">
+        <div class="day"> ${days[t2+2]} </div>
+        <div class="temp">Max - ${data.forecast.forecastday[2].day.maxtemp_c} &#176; C</div>
+        <div class="temp">Min - ${data.forecast.forecastday[2].day.mintemp_c} &#176; C</div>
     </div>`
 }
